@@ -1,0 +1,27 @@
+<p>
+    <mat-toolbar class="color-header">
+        <button mat-icon-button class="example-icon" [matMenuTriggerFor]="menu">
+            <mat-icon class="color-words">menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item><mat-label routerLink="/">Home</mat-label></button>
+            <button mat-menu-item *ngIf="dataUser != ''">
+                <mat-label routerLink="/dashboard">Dashboard</mat-label>
+            </button>
+            <button mat-menu-item *ngIf="dataUser != ''">
+                <mat-label routerLink="/edit-user">Edit User</mat-label>
+            </button>
+            <button mat-menu-item (click)="logout()" *ngIf="dataUser != ''">
+                <mat-label routerLink="/login">Log out</mat-label>
+            </button>
+          </mat-menu>
+        <span class="color-words">Hubbec App</span>
+
+        <span class="example-spacer"></span>
+        <mat-label class="color-words">{{dataUser}}</mat-label>
+        <span class="example-spacer"></span>
+        <a class="color-words nav-item nav-link" routerLink="/">Home | </a>
+        <a class="color-words nav-item nav-link" routerLink="/register">Register </a>
+        <a class="color-words nav-item nav-link" routerLink="/login" *ngIf="dataUser == ''"> |Login</a>
+    </mat-toolbar>
+</p>
