@@ -1,0 +1,144 @@
+<!--<mat-spinner *ngIf="submitted"></mat-spinner>-->
+<div class="contenedor">
+    <mat-card class="tarjeta">
+        <mat-card-header>
+            <mat-card-title>
+                <strong> <mat-label>Register user</mat-label> </strong> 
+            </mat-card-title>
+        </mat-card-header>
+        <br />
+        <mat-card-content>
+            <form [formGroup]="dataForm" ngSubmit="onSubmit(dataForm.value)">
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        Email
+                    </mat-label>
+                    <input matInput id="email" type="text" formControlName="email">
+                    <button matSuffix mat-icon-button (click)="handleClear('email')">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-error *ngIf="dataForm.controls['email'].hasError('required')">Email is required</mat-error>
+                    <mat-error *ngIf="dataForm.controls['email'].hasError('email')">Invalid email format</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        Phone Number
+                    </mat-label>
+                    <input matInput id="phoneNumber" type="text" formControlName="phoneNumber">
+                    <button matSuffix mat-icon-button (click)="handleClear('phoneNumber')">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-error *ngIf="dataForm.controls['phoneNumber'].hasError('required')">Phone Number is
+                        required</mat-error>
+                    <mat-error *ngIf="dataForm.controls['phoneNumber'].hasError('pattern')">Only numbers</mat-error>
+                    <mat-error *ngIf="dataForm.controls['phoneNumber'].hasError('maxlength')">10 characters
+                        maximum</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        First Name
+                    </mat-label>
+                    <input matInput id="firstName" type="text" formControlName="firstName">
+                    <button matSuffix mat-icon-button (click)="handleClear('firstName')">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-error *ngIf="dataForm.controls['firstName'].hasError('required')">First Name is
+                        required</mat-error>
+                    <mat-error *ngIf="dataForm.controls['firstName'].hasError('pattern')">Only letters</mat-error>
+                    <mat-error *ngIf="dataForm.controls['firstName'].hasError('minlength')">2 characters
+                        minimum</mat-error>
+                    <mat-error *ngIf="dataForm.controls['firstName'].hasError('maxlength')">100 characters
+                        maximum</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        Last Name
+                    </mat-label>
+                    <input matInput id="lastName" type="text" formControlName="lastName">
+                    <button matSuffix mat-icon-button (click)="handleClear('lastName')">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-error *ngIf="dataForm.controls['lastName'].hasError('required')">Last Name is
+                        required</mat-error>
+                    <mat-error *ngIf="dataForm.controls['lastName'].hasError('pattern')">Only letters</mat-error>
+                    <mat-error *ngIf="dataForm.controls['lastName'].hasError('minlength')">2 characters
+                        minimum</mat-error>
+                    <mat-error *ngIf="dataForm.controls['lastName'].hasError('maxlength')">100 characters
+                        maximum</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        Document Type
+                    </mat-label>
+                    <mat-select id="documentType" formControlName="documentType">
+                        <mat-option *ngFor="let docType of docsType" [value]="docType.value">
+                            {{docType.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="dataForm.controls['documentType'].hasError('required')">Document Type is
+                        required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        Document Number
+                    </mat-label>
+                    <input matInput id="documentNumber" type="text" formControlName="documentNumber">
+                    <button matSuffix mat-icon-button (click)="handleClear('documentNumber')">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-error *ngIf="dataForm.controls['documentNumber'].hasError('required')">Document Numberis
+                        required</mat-error>
+                    <mat-error *ngIf="dataForm.controls['documentNumber'].hasError('pattern')">Only numbers</mat-error>
+                    <mat-error *ngIf="dataForm.controls['documentNumber'].hasError('maxlength')">10 characters
+                        maximum</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        Birth Date
+                    </mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="birthDate" id="birthDate">
+                    <button matSuffix mat-icon-button (click)="handleClear('birthDate')">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="dataForm.controls['birthDate'].hasError('required')">Birth Date is
+                        required</mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label>
+                        Expedition Date
+                    </mat-label>
+                    <input matInput [matDatepicker]="pickerExp" formControlName="expeditionDate" id="expeditionDate">
+                    <button matSuffix mat-icon-button (click)="handleClear('expeditionDate')">
+                        <mat-icon>clear</mat-icon>
+                    </button>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="pickerExp"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerExp></mat-datepicker>
+                    <mat-error *ngIf="dataForm.controls['expeditionDate'].hasError('required')">Expedition Date is
+                        required</mat-error>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary"
+                        [disabled]="dataForm.invalid"
+                        (click)="confirmCreateUser()"
+                        type="submit">
+                        Save
+                </button>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+ 
+</div>
+<br />

@@ -1,0 +1,11 @@
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.color-header {
+    background-color: #171447;
+}
+
+.color-words {
+    color: #FFFFFF;
+}

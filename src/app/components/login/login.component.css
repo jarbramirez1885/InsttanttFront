@@ -1,0 +1,29 @@
+.example-container{
+    text-align: center
+}
+
+.form-container{
+    width: 400 px; 
+    margin: 0 px auto; 
+    margin-top: 200 px
+}
+
+.form-field{
+    display: block
+}
+
+.tarjeta {
+    min-width: 400px;
+    max-width: 600px;
+}
+
+.circular {
+    border-radius: 50%;
+}
+
+.contenedor {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
